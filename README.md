@@ -2,7 +2,7 @@
 
 ## Architecture Diagram
 
-![Architecture Diagram](/component-diagram/ComponentDiagramNoMQ.svg "Architecture Diagram")
+![Architecture Diagram](/component-diagram/ArchitectureDiagramNoMQ.svg "Architecture Diagram")
 
 ## Sequence Diagram
 
