@@ -1,0 +1,332 @@
+{
+	"info": {
+		"_postman_id": "89d4d156-5105-4719-b170-040edc394f13",
+		"name": "KBE_Gateway",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get ProductInfo with non UUID value Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/{{product_api}}/1eqwdkjioj7654",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{product_api}}",
+						"1eqwdkjioj7654"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "calc 3151253 vat",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"let vat = {\r",
+							"    \"gross\": 3749991.07,\r",
+							"    \"vat\": 598738.07,\r",
+							"    \"net\": 3151253\r",
+							"\t};\r",
+							"\r",
+							"    pm.test(\"correct calculation and json schema\", function () {\r",
+							"     pm.expect(pm.response.json()).to.deep.equal(vat);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "3151253",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/{{calc_api}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{calc_api}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get ProductList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"let schema = {\r",
+							"\"type\": \"array\",\r",
+							"\"items\":\r",
+							"{\r",
+							"    \"type\": \"object\",\r",
+							"    \"Properties\":\r",
+							"        {\r",
+							"        \"uuid\": {\"type\": \"string\"},\r",
+							"        \"price\": {\"type\": \"number\"},\r",
+							"        \"name\": {\"type\": \"string\"},\r",
+							"        \"description\": {\"type\": \"string\"},\r",
+							"        \"priceUSD\": {\"type\": \"number\"}\r",
+							"        }\r",
+							"    }\r",
+							"}\r",
+							"\r",
+							"pm.test(\"Response matches intial Database state\", function () {\r",
+							"    pm.response.to.have.jsonSchema(schema)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/{{product_api}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{product_api}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "error vat of 5.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "5.",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/{{calc_api}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{calc_api}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get productById",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"let pixel6Json = {\r",
+							"    \"uuid\": \"c0a9a688-ea0f-4816-a141-0b12e6a6c6be\",\r",
+							"    \"name\": \"Pixel 6\",\r",
+							"    \"price\": 699,\r",
+							"    \"vat\": 132.81,\r",
+							"    \"description\": \"Newest google phone\",\r",
+							"    \"location\": \"Berlin\",\r",
+							"    \"amount\": 2,\r",
+							"    \"deliveryTime\": 2\r",
+							"  }\r",
+							"\r",
+							"pm.test(\"Response matches intial Database state\", function () {\r",
+							"   pm.expect(pm.response.json()).to.deep.equal(pixel6Json);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/{{product_api}}/c0a9a688-ea0f-4816-a141-0b12e6a6c6be",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{product_api}}",
+						"c0a9a688-ea0f-4816-a141-0b12e6a6c6be"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get productById wtih non existing UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/{{product_api}}/9ff7de0c-acc9-4cee-a99c-c6fbafa237c5",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{product_api}}",
+						"9ff7de0c-acc9-4cee-a99c-c6fbafa237c5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "error vat of 7.123 too many decimals",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "7.123",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/{{calc_api}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{calc_api}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:56669",
+			"type": "string"
+		},
+		{
+			"key": "calc_api",
+			"value": "vat",
+			"type": "string"
+		},
+		{
+			"key": "product_api",
+			"value": "product",
+			"type": "string"
+		}
+	]
+}

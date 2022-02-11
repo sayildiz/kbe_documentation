@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "6564dfe5-74ba-46ff-84fd-dc1fbdd8078c",
+		"name": "KBE_AppService",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get productList",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"let schema = {",
+							"\"type\": \"array\",",
+							"\"items\":",
+							"{",
+							"    \"type\": \"object\",",
+							"    \"Properties\":",
+							"        {",
+							"        \"uuid\": {\"type\": \"string\"},",
+							"        \"price\": {\"type\": \"number\"},",
+							"        \"name\": {\"type\": \"string\"},",
+							"        \"description\": {\"type\": \"string\"},",
+							"        \"priceUSD\": {\"type\": \"number\"}",
+							"        }",
+							"    }",
+							"}",
+							"",
+							"pm.test(\"Response matches intial Database state\", function () {",
+							"    pm.response.to.have.jsonSchema(schema)",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/{{productList_api}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{productList_api}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get productById",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"let iPhone12Json =   {\r",
+							"    \"uuid\": \"9ff7de0c-acc9-4cee-a99c-c6fbafa237c9\",\r",
+							"    \"name\": \"IPhone 12\",\r",
+							"    \"price\": 999,\r",
+							"    \"vat\": 189.81,\r",
+							"    \"description\": \"Apple Smartphone cool\",\r",
+							"    \"location\": \"Berlin\",\r",
+							"    \"amount\": 6,\r",
+							"    \"deliveryTime\": 2\r",
+							"  }\r",
+							"\r",
+							"pm.test(\"Response matches intial Database state\", function () {\r",
+							"   pm.expect(pm.response.json()).to.deep.equal(iPhone12Json);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/{{productList_api}}/9ff7de0c-acc9-4cee-a99c-c6fbafa237c9",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{productList_api}}",
+						"9ff7de0c-acc9-4cee-a99c-c6fbafa237c9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get productById wtih non existing UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/{{productList_api}}/9ff7de0c-acc9-4cee-a99c-c6fbafa237c5",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{productList_api}}",
+						"9ff7de0c-acc9-4cee-a99c-c6fbafa237c5"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "localhost:8080"
+		},
+		{
+			"key": "heroku_url",
+			"value": "https://sayildiz-storage.herokuapp.com/",
+			"type": "string"
+		},
+		{
+			"key": "productList_api",
+			"value": "product",
+			"type": "string"
+		}
+	]
+}

@@ -1,0 +1,558 @@
+{
+	"info": {
+		"_postman_id": "d54d412a-0429-4ade-a2b7-6612bc107523",
+		"name": "KBE_Calculator",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "vat of 5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"let vat = {",
+							"    \"gross\": 5.95,",
+							"    \"vat\": 0.95,",
+							"    \"net\": 5.00",
+							"\t};",
+							"",
+							"    pm.test(\"correct calculation and json schema\", function () {",
+							"     pm.expect(pm.response.json()).to.deep.equal(vat);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "5",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/{{vat_api}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{vat_api}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vat of 30",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"let vat = {",
+							"    \"gross\": 35.70,",
+							"    \"vat\": 5.70,",
+							"    \"net\": 30.00",
+							"\t};",
+							"",
+							"    pm.test(\"correct calculation and json schema\", function () {",
+							"     pm.expect(pm.response.json()).to.deep.equal(vat);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "30",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/{{vat_api}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{vat_api}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vat of 54",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"let vat = {",
+							"    \"gross\": 64.26,",
+							"    \"vat\": 10.26,",
+							"    \"net\": 54.00",
+							"\t};",
+							"",
+							"    pm.test(\"correct calculation and json schema\", function () {",
+							"     pm.expect(pm.response.json()).to.deep.equal(vat);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "54",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/{{vat_api}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{vat_api}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vat of 1234",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"let vat = {",
+							"    \"gross\": 1468.46,",
+							"    \"vat\": 234.46,",
+							"    \"net\": 1234.00",
+							"\t};",
+							"",
+							"    pm.test(\"correct calculation and json schema\", function () {",
+							"     pm.expect(pm.response.json()).to.deep.equal(vat);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "1234",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/{{vat_api}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{vat_api}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vat of 3151253",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"let vat = {",
+							"    \"gross\": 3749991.07,",
+							"    \"vat\": 598738.07,",
+							"    \"net\": 3151253",
+							"\t};",
+							"",
+							"    pm.test(\"correct calculation and json schema\", function () {",
+							"     pm.expect(pm.response.json()).to.deep.equal(vat);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "3151253",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/{{vat_api}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{vat_api}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vat of 50",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"let vat = {",
+							"    \"gross\": 59.5,",
+							"    \"vat\": 9.5,",
+							"    \"net\": 50.0",
+							"\t};",
+							"",
+							"    pm.test(\"correct calculation and json schema\", function () {",
+							"     pm.expect(pm.response.json()).to.deep.equal(vat);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "50",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/{{vat_api}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{vat_api}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vat of 50.0 with decimal",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"let vat = {",
+							"    \"gross\": 59.5,",
+							"    \"vat\": 9.5,",
+							"    \"net\": 50.0",
+							"\t};",
+							"",
+							"    pm.test(\"correct calculation and json schema\", function () {",
+							"     pm.expect(pm.response.json()).to.deep.equal(vat);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "50.0",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/{{vat_api}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{vat_api}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vat of 9999999.99",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"let vat = {",
+							"    \"gross\": 11899999.99,",
+							"    \"vat\": 1900000.00,",
+							"    \"net\": 9999999.99",
+							"\t};",
+							"",
+							"    pm.test(\"correct calculation and json schema\", function () {",
+							"     pm.expect(pm.response.json()).to.deep.equal(vat);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "9999999.99",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/{{vat_api}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{vat_api}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "vat of 678912345678.77",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"let vat = {",
+							"    \"gross\": 807905691357.74,",
+							"    \"vat\":   128993345678.97,",
+							"    \"net\":   678912345678.77",
+							"\t};",
+							"",
+							"    pm.test(\"correct calculation and json schema\", function () {",
+							"     pm.expect(pm.response.json()).to.deep.equal(vat);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "678912345678.77",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/{{vat_api}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{vat_api}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "error vat of 7.123 too many decimals",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "7.123",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/{{vat_api}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{vat_api}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "error vat of 5.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "5.",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/{{vat_api}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{vat_api}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "localhost:8080"
+		},
+		{
+			"key": "vat_api",
+			"value": "vat"
+		}
+	]
+}

@@ -1,0 +1,190 @@
+{
+	"info": {
+		"_postman_id": "63d6a7df-b177-498e-9eb4-ae27aca839e0",
+		"name": "KBE_Storage",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get All ProductInfos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/{{productInfo_api}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{productInfo_api}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get ProductInfo by Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"let productInfo = {",
+							"       \"uuid\": \"9ff7de0c-acc9-4cee-a99c-c6fbafa237c9\",",
+							"    \"location\": \"Berlin\",",
+							"    \"amount\": 6,",
+							"    \"deliveryTime\": 2",
+							"\t};",
+							"",
+							"    pm.test(\"correct JSON response\", function () {",
+							"     pm.expect(pm.response.json()).to.deep.equal(productInfo);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/{{productInfo_api}}/9ff7de0c-acc9-4cee-a99c-c6fbafa237c9",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{productInfo_api}}",
+						"9ff7de0c-acc9-4cee-a99c-c6fbafa237c9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get ProductInfo wtih non existing UUID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let errorMsg = \"Could not find song with UUID\"",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(errorMsg);",
+							"});",
+							"",
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/{{productInfo_api}}/9ff7de0c-acc9-4cee-a99c-c6fbafa237c7",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{productInfo_api}}",
+						"9ff7de0c-acc9-4cee-a99c-c6fbafa237c7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get ProductInfo with non UUID value",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let errorMsg = \"Bad Request: expects valid UUID like\"",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(errorMsg);",
+							"});",
+							"",
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/{{productInfo_api}}/1eqwdkjioj7654",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"{{productInfo_api}}",
+						"1eqwdkjioj7654"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "localhost:8080"
+		},
+		{
+			"key": "productInfo_api",
+			"value": "productinfo"
+		},
+		{
+			"key": "heroku_url",
+			"value": "https://sayildiz-storage.herokuapp.com/",
+			"type": "string"
+		}
+	]
+}
