@@ -1,8 +1,8 @@
 # kbe_documentation
 
-## Component Diagram
+## Architecture Diagram
 
-![Component Diagram](/component-diagram/ComponentDiagramNoMQ.svg "Component Diagram")
+![Architecture Diagram](/component-diagram/ComponentDiagramNoMQ.svg "Architecture Diagram")
 
 ## Sequence Diagram
 
